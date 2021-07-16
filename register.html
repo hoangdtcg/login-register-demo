@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <script src="data.js"></script>
+</head>
+<style>
+
+form {
+    width: 300px;
+    margin: auto;
+}
+
+input {
+    display: block;
+    margin-bottom: 10px;
+    width: 90%;
+}
+</style>
+<body>
+    <form id="signup">
+        <fieldset>
+            <legend>Register</legend>
+            <input type="text" id="username" placeholder="Tên của bạn">
+            <input type="text" id="email" placeholder="Email của bạn">
+            <input type="password" id="password" placeholder="Mật khẩu của bạn">
+            <input type="password" id="confirmPassword" placeholder="Xác nhận mật khẩu">
+            <button type ="button" onclick="register()">Đăng ký</button>
+            <button>Huỷ</button>
+        </fieldset>
+    </form>
+</body>
+<script>
+    function register() {
+        let username = getValueById('username');
+        let email = getValueById('email');
+        let password = getValueById('password');
+        let confirmPassword = getValueById('confirmPassword');
+        if(username == '' || email == '' || password == ''){
+            alert('Vui long nhap thong tin');
+            return;
+        }
+        if(confirmPassword != password){
+            alert("Mật khẩu xác nhận không chính xác!");
+            return;
+        }
+
+        let user = [username,email,password];
+        //Them nguoi dung moi
+        let data = loadData();
+        data.push(user);
+        saveData(data);
+        alert('Đăng ký thành công!');
+        clearForm();
+        window.location.href = 'login.html';
+    }
+
+    function clearForm() {
+        document.getElementById('signup').reset();
+    }
+
+    function getValueById(id) {
+        return document.getElementById(id).value;
+    }
+</script>
+</html>

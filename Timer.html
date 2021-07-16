@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+</head>
+<body>
+    <h1>Đồng hồ đếm giờ</h1>
+    <p><span id="seconds">00</span><span>:</span><span id ="tens">00</span></p>
+    <button onclick="startTime()" id="startTime">Start</button>
+    <button onclick="stopTime()" id="stopTime">Stop</button>
+    <button onclick="resetTime()" id="resetTime">Reset</button>
+
+    <script> 
+        
+        let tens = 0;
+        let seconds = 0;
+        let setIn;
+  
+
+        function start() {
+            tens++;
+            
+            if(tens > 99){
+                tens = 0;
+                seconds++;
+            }
+
+            display(seconds,tens);
+            
+           
+        }
+        
+        function startTime() {
+            setIn = setInterval(start, 10);
+
+        }
+        function stopTime() {
+            clearInterval(setIn);
+        }
+
+        function resetTime() {
+            tens = 0;
+            seconds = 0;
+            setIn = null;
+            display(seconds,tens);
+        }
+
+        function display(second,tens) {
+            if(second < 10) second = '0'+second;
+            if(tens < 10) tens = '0'+tens;
+            document.getElementById('tens').innerText = tens;
+            document.getElementById('seconds').innerText = second;
+        }
+       
+
+       
+       
+    </script>
+</body>
+</html>

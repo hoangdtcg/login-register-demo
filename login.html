@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <script src="data.js"></script>
+</head>
+<style>
+
+form {
+    width: 300px;
+    margin: auto;
+}
+
+input {
+    display: block;
+    margin-bottom: 10px;
+    width: 90%;
+}
+</style>
+<body>
+    <form id="signin">
+        <fieldset>
+            <legend>Login</legend>
+            <input type="text" id="username" placeholder="Tên của bạn">
+            <input type="password" id="password" placeholder="Mật khẩu của bạn">
+            <button type ="button" onclick="login()">Login</button>
+            <button>Huỷ</button>
+        </fieldset>
+    </form>
+</body>
+<script>
+    function login() {
+        let username = getValueById('username');
+        let password = getValueById('password');
+        let data = loadData();
+        for(let i = 0; i < data.length;i++){
+            if(username == data[i][0]){
+                if(password == data[i][2]){
+                    alert('Đăng nhập thành công!');
+                    window.location.href = 'index.html';
+                    return;
+                }else{
+                    alert('Sai mật khẩu');
+                    return;
+                }
+            }
+        }
+        alert("Tài khoản này không tồn tại");
+        
+    }
+
+    function clearForm() {
+        document.getElementById('signin').reset();
+    }
+
+    function getValueById(id) {
+        return document.getElementById(id).value;
+    }
+</script>
+</html>

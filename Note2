@@ -1,0 +1,12 @@
+Phạm vi hoạt động của biến: (Scope) - {}
+
+- non strict : không nghiêm ngặt - mặc định javascript
+- strict : chế độ nghiêm ngặt
+
+Biến khai báo trong hàm thì chỉ dùng trong hàm thôi
+
+Tham số : (parameter) - param
+    - Tham chiếu: chiếu đến vị trị của ô nhớ và có thể thay đổi giá trị (array,object)
+    - Tham trị: chỉ lấy giá trị, không thay đổi giá trị của ô nhớ
+    (Kiểu dữ liệu nguyên thuỷ: number(int, float), string, char, boolean, null, undifined)
+Đối số: Argument - args
